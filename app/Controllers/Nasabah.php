@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+class Nasabah extends BaseController
 {
     public function index(): string
     {
-        return view('nasabah_show');
+        return view('nasabah/nasabah_show');
     }
 }
