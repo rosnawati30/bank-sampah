@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+class Transaksi extends BaseController
 {
     public function index(): string
     {
