@@ -7,7 +7,7 @@
     <div class="w-full flex items-center justify-between">
         <div class="flex-none">
             <button type="button" class="text-white bg-green-800 hover:bg-indigo-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-4 focus:outline-none">
-            <a href="nasabah_add">
+            <a href="<?= base_url('nasabah_add') ?>">
                 Tambah Data Nasabah
             </a>  
             </button>
@@ -56,7 +56,9 @@
                         5 kg
                     </td>
                     <td class="px-6 py-4">
-                        <a href="nasabah_detail/<?= $id_nasabah; ?>" class="font-medium text-green-600 hover:underline">Detail</a>
+                        <a href="<?= base_url('nasabah_detail') ?>" class="font-medium text-green-600 hover:underline">Detail</a>
+                        <a href="<?= base_url('nasabah_update') ?>" class="font-medium text-yellow-600 hover:underline">Edit</a>
+                        <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
