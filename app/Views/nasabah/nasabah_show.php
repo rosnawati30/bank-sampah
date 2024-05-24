@@ -1,4 +1,4 @@
-<?= $this->extend('layout'); ?>
+<?= $this->extend('template/layout'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -7,8 +7,8 @@
     <div class="w-full flex items-center justify-between">
         <div class="flex-none">
             <button type="button" class="text-white bg-indigo-900 hover:bg-indigo-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-4 focus:outline-none">
-            <a href="sampah_add">
-                Tambah Data Sampah
+            <a href="nasabah_add">
+                Tambah Data Nasabah
             </a>  
             </button>
         </div>
@@ -24,13 +24,13 @@
                         No
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Item
+                        Nama
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Kode
+                        Alamat
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Harga
+                        Total Sampah
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Action
@@ -39,24 +39,24 @@
             </thead>
             <tbody>
                 <?php $i = 1; ?>
-                <?php $id_sampah = 1; ?>
-                <?php $sampah = ['Ember', 'AC']; ?>
-                <?php foreach ($sampah as $s): ?>
+                <?php $id_nasabah = 1; ?>
+                <?php $nasabah = ['Fitri', 'Fedya', 'Rosnawati', 'Shierra'] ?>
+                <?php foreach ($nasabah as $p): ?>
                 <tr class="bg-white border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap w-16">
                         <?= $i++; ?>
                     </th>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        <?= $s; ?>
+                        <?= $p; ?>
                     </th>
                     <td class="px-6 py-4">
-                        <?= $s; ?>
+                        Jalan Windah
                     </td>
                     <td class="px-6 py-4">
-                        2000
+                        5 kg
                     </td>
                     <td class="px-6 py-4">
-                        <a href="nasabah_update/<?= $id_sampah; ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ubah</a>
+                        <a href="nasabah_detail/<?= $id_nasabah; ?>" class="font-medium text-green-600 hover:underline">Detail</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
