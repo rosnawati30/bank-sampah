@@ -14,7 +14,6 @@
         </div>
 
         <!-- di sini nanti buat naro notif kalo data berhasil ditambah, dihapus, diedit -->
-
     </div>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -56,7 +55,7 @@
                     <td class="px-6 py-4">
                         <a href="nasabah/detail/<?= $p['id_nasabah']; ?>" class="font-medium text-green-600 hover:underline">Detail</a>
                         <a href="nasabah/edit/<?= $p['id_nasabah']; ?>" class="font-medium text-yellow-600 hover:underline">Edit</a>
-                        <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
+                        <a href="nasabah/delete/<?= $p['id_nasabah']; ?>" class="font-medium text-red-600 hover:underline">Hapus</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

@@ -28,9 +28,12 @@ class Nasabah extends BaseController
         return redirect()->to('nasabah');
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return view('nasabah/nasabah_detail');
+        $nasabah = new NasabahModel();
+        $data['nasabah'] = $nasabah->find($id);
+
+        return view('nasabah/nasabah_detail', $data);
     }
 
     public function edit($id)
@@ -51,6 +54,13 @@ class Nasabah extends BaseController
         ];
 
         $nasabah->updateNasabah($id, $data);
+        return redirect()->to('nasabah');
+    }
+
+    public function delete($id){
+        $nasabah = new NasabahModel();
+        $nasabah->delete($id);
+
         return redirect()->to('nasabah');
     }
 }
