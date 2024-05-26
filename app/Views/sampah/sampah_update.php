@@ -29,7 +29,7 @@
                                 name="kode"
                                 id="kode"
                                 class="w-10/12 focus:outline-none focus:text-black p-2"
-                                value="<?= isset($sampah['kode']) ? $sampah['kode'] : '' ?>" 
+                                value="<?= old('kode') ?? isset($sampah['kode']) ? $sampah['kode'] : '' ?>" 
                                 placeholder="Masukkan kode sampah" 
                                 required="required"
                               />
@@ -47,7 +47,7 @@
                             name="item"
                             id="item"
                             class="w-10/12 focus:outline-none focus:text-black p-2"
-                            value="<?= isset($sampah['item']) ? $sampah['item'] : '' ?>" 
+                            value="<?= old('item') ?? isset($sampah['item']) ? $sampah['item'] : '' ?>" 
                             placeholder="Masukkan nama sampah"
                             required="required"
                         />
@@ -65,7 +65,7 @@
                             name="harga"
                             id="harga"
                             class="w-10/12 focus:outline-none focus:text-black p-2"
-                            value="<?= isset($sampah['harga']) ? $sampah['harga'] : '' ?>" 
+                            value="<?= old('harga') ?? (isset($sampah['harga']) ? $sampah['harga'] : '') ?>"
                             placeholder="Masukkan harga sampah per kg" 
                             required="required"
                         />
@@ -75,9 +75,9 @@
         </div>
 
         <div class="pb-12 pt-4 items-center justify-between sm:text-center">
-        <a href="/sampah" class="text-white text-l bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-violet-300 font-bold rounded-lg px-4 py-[0.60rem] text-center mr-3 md:mr-0"
+        <a href="/sampah" class="text-white text-l bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-bold rounded-lg px-4 py-[0.60rem] text-center mr-3 md:mr-0"
           >Kembali</a>
-        <button class="text-white text-l bg-green-800 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-violet-300 font-bold rounded-lg px-4 py-2 text-center mr-3 md:mr-0"
+        <button class="text-white text-xl bg-green-800 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-bold rounded-lg px-4 py-2 text-center mr-3 md:mr-0"
             type="submit"
             id="save">Ubah</button>
         </form>

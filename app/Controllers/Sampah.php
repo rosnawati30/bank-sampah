@@ -48,7 +48,6 @@ class Sampah extends BaseController
     public function save()
     {
         if(!empty($this->request->getPost('id_sampah'))){
-
             if (!$this->validate([
                 'kode' => [
                     'rules' => 'required|min_length[5]|max_length[6]|is_unique[sampah.kode,sampah.id_sampah,'.$this->request->getPost('id_sampah').']',
@@ -78,7 +77,7 @@ class Sampah extends BaseController
                 ]
                 )) {
                 $this->session->setFlashdata('error', $this->validator->listErrors());
-                return redirect()->back()->withInput();
+                return redirect()->to('sampah/update/' . $this->request->getPost('id_sampah'))->withInput();
             }
             $post = [             
                 'item' => $this->request->getPost('item'),
@@ -116,7 +115,7 @@ class Sampah extends BaseController
                 ]
                 )) {
                 $this->session->setFlashdata('error', $this->validator->listErrors());
-                return redirect()->back()->withInput();
+                return redirect()->to('sampah/create')->withInput();
             }
             $post = [             
                 'item' => $this->request->getPost('item'),
