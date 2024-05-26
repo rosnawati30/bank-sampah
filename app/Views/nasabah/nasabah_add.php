@@ -1,7 +1,8 @@
 <?= $this->extend('template/layout'); ?>
 
 <?= $this->section('content'); ?>
-<form action="save" method="post">
+<form action="<?= base_url('nasabah/save')?>" method="post">
+    <?= csrf_field() ?>
     <div class="px-4 py-20 sm:ml-64">
         <div class="border-b border-gray-900/10 pb-12">
             <h2 class="text-base font-semibold leading-7 text-gray-900">Form Tambah Data Nasabah</h2>
@@ -10,19 +11,28 @@
                     <div class="sm:col-span-3">
                         <label for="nama" class="block text-sm font-medium leading-6 text-gray-900">Nama Lengkap</label>
                         <div class="mt-2">
-                            <input type="text" name="nama" id="nama" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <input type="text" name="nama" id="nama" value="<?= old('nama') ?>" placeholder="Masukan nama lengkap" aria-describedby="helper-text-explanation" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">                            
+                            <?php if (isset($validation) && $validation->hasError('nama')): ?>
+                                <div class="error"><?= $validation->getError('nama') ?></div>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="col-span-full">
                         <label for="alamat" class="block text-sm font-medium leading-6 text-gray-900">Alamat</label>
                         <div class="mt-2">
-                            <textarea id="alamat" name="alamat" rows="3" class="block w-1/2 rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                            <textarea id="alamat" name="alamat" rows="3" value="<?= old('alamat') ?>" placeholder="Masukan alamat" class="block w-1/2 rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                            <?php if (isset($validation) && $validation->hasError('alamat')): ?>
+                                <div class="error"><?= $validation->getError('alamat') ?></div>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="sm:col-span-3">
                         <label for="total_sampah" class="block text-sm font-medium leading-6 text-gray-900">Berat Sampah</label>
                         <div class="mt-2">
-                            <input type="text" name="total_sampah" id="total_sampah" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <input type="text" name="total_sampah" id="total_sampah" value="<?= old('total_sampah') ?>" placeholder="Berat sampah (kg)" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <?php if (isset($validation) && $validation->hasError('total_sampah')): ?>
+                                <div class="error"><?= $validation->getError('total_sampah') ?></div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

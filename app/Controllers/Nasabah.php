@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 use App\Models\NasabahModel;
+use Config\Validation;
+use Config\Services;
 
 class Nasabah extends BaseController
 {
@@ -18,14 +20,26 @@ class Nasabah extends BaseController
     }
 
     public function save(){
+        $validation = Services::validation();
+        $validationConfig = new Validation();
+
+        $validation->setRules($validationConfig->nasabah, $validationConfig->nasabah_errors);
+
+        if (!$this->validate($validation->getRules())) {
+            return view('nasabah/nasabah_add', [
+                'validation' => $validation
+            ]);
+        }
+
         $nasabah = new NasabahModel();
         $data = [
             'nama' => $this->request->getPost('nama'),
             'alamat' => $this->request->getPost('alamat'),
             'total_sampah' => $this->request->getPost('total_sampah')
         ];
+
         $nasabah->save($data);
-        return redirect()->to('nasabah');
+        return redirect()->to('/nasabah');
     }
 
     public function detail($id)
@@ -45,6 +59,17 @@ class Nasabah extends BaseController
     }
 
     public function update($id){
+        $validation = \Config\Services::validation();
+        $validationConfig = new Validation();
+
+        $validation->setRules($validationConfig->nasabah, $validationConfig->nasabah_errors);
+
+        if (!$this->validate($validation->getRules())) {
+            return view('nasabah/nasabah_add', [
+                'validation' => $validation
+            ]);
+        }
+
         $nasabah = new NasabahModel();
 
         $data = [
@@ -53,14 +78,21 @@ class Nasabah extends BaseController
             'total_sampah' => $this->request->getPost('total_sampah')
         ];
 
-        $nasabah->updateNasabah($id, $data);
-        return redirect()->to('nasabah');
+        $nasabah->update($id, $data);
+        return redirect()->to('/nasabah');
     }
 
     public function delete($id){
         $nasabah = new NasabahModel();
         $nasabah->delete($id);
 
-        return redirect()->to('nasabah');
+        $this->resetAutoIncrement();
+
+        return redirect()->to('/nasabah');
+    }
+
+    private function resetAutoIncrement(){
+        $db = \Config\Database::connect();
+        $query = $db->query("ALTER TABLE nasabah AUTO_INCREMENT = 1");
     }
 }
