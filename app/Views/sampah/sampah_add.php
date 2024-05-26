@@ -5,7 +5,7 @@
   <div class="container h-full px-6 py-6">
         <nav class="lg:flex lg:items-center lg:justify-between">
             <div class="max-w-screen-xl flex flex-wrap mx-2 p-4 ">
-                 <h2 class="text-2xl font-bold leading-7 text-green-800 sm:truncate sm:text-3xl sm:tracking-tight">Tambah Jenis Sampah</h2>
+                 <h2 class="text-2xl font-bold leading-7 text-green-800 sm:truncate sm:text-3xl sm:tracking-tight">Tambah Data Sampah</h2>
             </div>    
         </nav>
 
