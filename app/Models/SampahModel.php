@@ -57,9 +57,10 @@ class SampahModel extends Model
 
     function getAllWhereId($id_sampah){
         $builder = $this->db->table('sampah');
-        $builder->select('item', 'kode', 'harga')
+        $builder->select('*')
                 ->where('id_sampah', $id_sampah);
         $query = $builder->get();
-        return $query->getResult();
+        return $query->getRowArray();
+        // var_dump($query->getRowArray());
     }
 }

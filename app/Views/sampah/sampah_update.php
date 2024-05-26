@@ -15,6 +15,7 @@
 
         <form method="post" action="<?= base_url('/sampah/save'); ?>">
             <?= csrf_field(); ?>
+            <input type="hidden" value="<?= isset($sampah['id_sampah']) ? $sampah['id_sampah'] : '' ?>" name="id_sampah">
                 <div class="mx-auto space-y-5 p-4">
                     <div>
                         <label class="text-sm font-bold text-black">Kode Sampah</label>
@@ -28,6 +29,7 @@
                                 name="kode"
                                 id="kode"
                                 class="w-10/12 focus:outline-none focus:text-black p-2"
+                                value="<?= isset($sampah['kode']) ? $sampah['kode'] : '' ?>" 
                                 placeholder="Masukkan kode sampah" 
                                 required="required"
                               />
@@ -45,6 +47,7 @@
                             name="item"
                             id="item"
                             class="w-10/12 focus:outline-none focus:text-black p-2"
+                            value="<?= isset($sampah['item']) ? $sampah['item'] : '' ?>" 
                             placeholder="Masukkan nama sampah"
                             required="required"
                         />
@@ -62,6 +65,7 @@
                             name="harga"
                             id="harga"
                             class="w-10/12 focus:outline-none focus:text-black p-2"
+                            value="<?= isset($sampah['harga']) ? $sampah['harga'] : '' ?>" 
                             placeholder="Masukkan harga sampah per kg" 
                             required="required"
                         />
@@ -75,7 +79,7 @@
           >Kembali</a>
         <button class="text-white text-l bg-green-800 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-violet-300 font-bold rounded-lg px-4 py-2 text-center mr-3 md:mr-0"
             type="submit"
-            id="save">Tambah</button>
+            id="save">Ubah</button>
         </form>
         </div>
 

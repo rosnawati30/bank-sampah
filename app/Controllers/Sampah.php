@@ -23,18 +23,26 @@ class Sampah extends BaseController
 
     public function index(): string
     {
+        $this->data['title'] = "Daftar Sampah";
         $this->data['sampah'] = $this->sampah_model->orderBy('kode ASC')->getAll();
         return view('sampah/sampah_show', $this->data);
     }
 
     public function create()
     {
+        $this->data['title'] = "Tambah Data Sampah";
         return view('sampah/sampah_add', $this->data);
     }
 
     public function update($id_sampah = '')
     {
-        return view('sampah/sampah_update');
+        $this->data['title'] = "Ubah Data Sampah";
+        if(empty($id_sampah)){
+            $this->session->setFlashdata('error','Tidak dapat menemukan data sampah!') ;
+            return redirect()->to('/sampah');
+        }
+        $this->data['sampah'] = $this->sampah_model->getAllWhereId($id_sampah);
+        return view('sampah/sampah_update', $this->data);
     }
 
     public function save()
@@ -118,25 +126,30 @@ class Sampah extends BaseController
             $save = $this->sampah_model->insert($post);}
         if($save){
             if(!empty($this->request->getPost('id_sampah')))
-                $this->session->setFlashdata('success','Data sampah success diperbarui') ;
+                $this->session->setFlashdata('success','Data sampah berhasil diperbarui') ;
             else
-                $this->session->setFlashdata('success','Data sampah success disimpan') ;
-                $id =!empty($this->request->getPost('id_sampah')) ? $this->request->getPost('id_samoah') : $save;
+                $this->session->setFlashdata('success','Data sampah berhasil disimpan') ;
+                $id =!empty($this->request->getPost('id_sampah')) ? $this->request->getPost('id_sampah') : $save;
                 return redirect()->to('sampah');
         }else{
-            return view('sampah/create', $this->data);
+            if(!empty($this->request->getPost('id_sampah')))
+                $this->session->setFlashdata('error','Data sampah gagal diperbarui') ;
+            else
+                $this->session->setFlashdata('errpr','Data sampah gagal disimpan') ;
+                return redirect()->to('sampah');
+            // return view('sampah/create', $this->data);
         }
     }
 
     public function delete($id_sampah = '')
     {
         if(empty($id_sampah)){
-            $this->session->setFlashdata('error','Sampah Tidak Ditemukan') ;
+            $this->session->setFlashdata('error','Sampah tidak ditemukan') ;
             return redirect()->to('/sampah');
         }
         $delete = $this->sampah_model->delete($id_sampah);
         if($delete){
-            $this->session->setFlashdata('success','Data sampah success dihapus.') ;
+            $this->session->setFlashdata('success','Data sampah berhasil dihapus.') ;
             return redirect()->to('/sampah');
         }
     }
