@@ -10,7 +10,7 @@
                     <div class="sm:col-span-3">
                         <label for="nama" class="block text-sm font-medium leading-6 text-gray-900">Nama Lengkap</label>
                         <div class="mt-2">
-                            <input type="text" name="nama" id="nama" value="<?= $nasabah['nama']?>" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <input type="text" name="nama" id="nama" value="<?= old('nama', $nasabah['nama']) ?>" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             <?php if (isset($validation) && $validation->hasError('nama')): ?>
                                 <div class="error"><?= $validation->getError('nama') ?></div>
                             <?php endif; ?>
@@ -19,7 +19,7 @@
                     <div class="col-span-full">
                         <label for="alamat" class="block text-sm font-medium leading-6 text-gray-900">Alamat</label>
                         <div class="mt-2">
-                            <textarea id="alamat" name="alamat" rows="3" class="block w-1/2 rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"><?= $nasabah['alamat']?></textarea>
+                            <textarea id="alamat" name="alamat" rows="3" class="block w-1/2 rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"><?= old('alamat', $nasabah['alamat']) ?></textarea>
                             <?php if (isset($validation) && $validation->hasError('alamat')): ?>
                                 <div class="error"><?= $validation->getError('alamat') ?></div>
                             <?php endif; ?>
@@ -28,7 +28,7 @@
                     <div class="sm:col-span-3">
                         <label for="total_sampah" class="block text-sm font-medium leading-6 text-gray-900">Berat Sampah</label>
                         <div class="mt-2">
-                            <input type="text" name="total_sampah" id="total_sampah" value="<?= $nasabah['total_sampah']?>" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <input type="text" name="total_sampah" id="total_sampah" value="<?= old('total_sampah', $nasabah['total_sampah']) ?>" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             <?php if (isset($validation) && $validation->hasError('total_sampah')): ?>
                                 <div class="error"><?= $validation->getError('total_sampah') ?></div>
                             <?php endif; ?>

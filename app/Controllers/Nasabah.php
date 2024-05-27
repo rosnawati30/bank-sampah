@@ -7,6 +7,17 @@ use Config\Services;
 
 class Nasabah extends BaseController
 {
+     // Session
+     protected $session;
+     protected $data;
+
+     // Initialize Objects
+    function __construct(){
+        $this->session= \Config\Services::session();
+        $this->data['session'] = $this->session;
+        $this->data['request'] = $this->request;
+    }
+
     public function index(): string
     {
         $nasabah = new NasabahModel();
@@ -16,19 +27,19 @@ class Nasabah extends BaseController
 
     public function create ()
     {
+        $data['validation'] = $this->session->getFlashdata('validation');
         return view('nasabah/nasabah_add');
     }
 
     public function save(){
-        $validation = Services::validation();
+        $validation = \Config\Services::validation();
         $validationConfig = new Validation();
 
         $validation->setRules($validationConfig->nasabah, $validationConfig->nasabah_errors);
 
         if (!$this->validate($validation->getRules())) {
-            return view('nasabah/nasabah_add', [
-                'validation' => $validation
-            ]);
+            $this->session->setFlashdata('validation', $validation);
+            return redirect()->to('/nasabah/create')->withInput();
         }
 
         $nasabah = new NasabahModel();
@@ -39,15 +50,8 @@ class Nasabah extends BaseController
         ];
 
         $nasabah->save($data);
+        session()->setFlashdata('pesan', 'Nasabah berhasil ditambahkan');
         return redirect()->to('/nasabah');
-    }
-
-    public function detail($id)
-    {
-        $nasabah = new NasabahModel();
-        $data['nasabah'] = $nasabah->find($id);
-
-        return view('nasabah/nasabah_detail', $data);
     }
 
     public function edit($id)
@@ -55,6 +59,7 @@ class Nasabah extends BaseController
         $nasabah = new NasabahModel();
         $data['nasabah'] = $nasabah->find($id);
 
+        $data['validation'] = $this->session->getFlashdata('validation');
         return view('nasabah/nasabah_update', $data);
     }
 
@@ -65,9 +70,8 @@ class Nasabah extends BaseController
         $validation->setRules($validationConfig->nasabah, $validationConfig->nasabah_errors);
 
         if (!$this->validate($validation->getRules())) {
-            return view('nasabah/nasabah_add', [
-                'validation' => $validation
-            ]);
+            $this->session->setFlashdata('validation', $validation);
+            return redirect()->to('/nasabah/edit/' .$id)->withInput();
         }
 
         $nasabah = new NasabahModel();
@@ -78,6 +82,7 @@ class Nasabah extends BaseController
             'total_sampah' => $this->request->getPost('total_sampah')
         ];
 
+        session()->setFlashdata('pesan', 'Nasabah berhasil diubah');
         $nasabah->update($id, $data);
         return redirect()->to('/nasabah');
     }
@@ -88,6 +93,7 @@ class Nasabah extends BaseController
 
         $this->resetAutoIncrement();
 
+        session()->setFlashdata('pesan', 'Nasabah berhasil dihapus');
         return redirect()->to('/nasabah');
     }
 
