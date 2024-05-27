@@ -12,9 +12,9 @@ class NasabahModel extends Model{
         'created_at'
     ];
 
-    public function updateNasabah($id, $data){
-        return $this->where('id_nasabah', $id)->set($data)->update();
-    }
+    // public function updateNasabah($id, $data){
+    //     return $this->where('id_nasabah', $id)->set($data)->update();
+    // }
 }
 
 ?>

@@ -6,12 +6,14 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('nasabah', 'Nasabah::index');
+// $routes->get('nasabah', 'Nasabah::index');
 
 //CRUD Nasabah 
-// $routes->get('nasabah_add', 'Nasabah::create');
-// $routes->get('nasabah_detail', 'Nasabah::view');
-// $routes->get('nasabah_update', 'Nasabah::update');
+$routes->get('nasabah/add', 'Nasabah::create');
+$routes->post('nasabah/save', 'Nasabah::save');
+$routes->get('nasabah/edit/(:num)', 'Nasabah::edit/$1');
+$routes->post('nasabah/update/(:num)', 'Nasabah::update/$1');
+$routes->get('nasabah/delete/(:num)', 'Nasabah::delete/$1');
 
 $routes->get('/nasabah/detail/(:num)', 'Transaksi::view/$1');
 $routes->get('/transaksi/create/(:num)', 'Transaksi::create/$1');
