@@ -46,13 +46,13 @@
                         <?= $i++; ?>
                     </th>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        <?= $row->kode ?>
+                        <?= $row->item ?>
                     </th>
                     <td class="px-6 py-4">
-                        <?= $row->item ?>
+                        <?= $row->kode ?>
                     </td>
                     <td class="px-6 py-4">
-                        <?= $row->harga ?>
+                        Rp<?= number_format($row->harga, 2); ?>
                     </td>
                     <td class="px-6 py-4 items-center justify-center">
                         <a href="<?= base_url('sampah/update/'.$row->id_sampah) ?>" class="pr-2 text-blue-600 dark:text-blue-500 hover:text-blue-800">

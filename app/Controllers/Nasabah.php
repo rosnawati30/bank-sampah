@@ -21,14 +21,16 @@ class Nasabah extends BaseController
     public function index(): string
     {
         $nasabah = new NasabahModel();
-        $data['nasabah'] = $nasabah->findAll();
+        $data['title'] = "Daftar Nasabah";
+        $data['nasabah'] = $nasabah->orderBy('nama', 'ASC')->findAll();
         return view('nasabah/nasabah_show', $data);
     }
 
     public function create ()
     {
+        $data['title'] = "Daftar Nasabah";
         $data['validation'] = $this->session->getFlashdata('validation');
-        return view('nasabah/nasabah_add');
+        return view('nasabah/nasabah_add', $data);
     }
 
     public function save(){
@@ -58,7 +60,7 @@ class Nasabah extends BaseController
     {
         $nasabah = new NasabahModel();
         $data['nasabah'] = $nasabah->find($id);
-
+        $data['title'] = "Daftar Nasabah";
         $data['validation'] = $this->session->getFlashdata('validation');
         return view('nasabah/nasabah_update', $data);
     }
@@ -99,6 +101,6 @@ class Nasabah extends BaseController
 
     private function resetAutoIncrement(){
         $db = \Config\Database::connect();
-        $query = $db->query("ALTER TABLE nasabah AUTO_INCREMENT = 1");
+        $db->query("ALTER TABLE nasabah AUTO_INCREMENT = 1; ALTER TABLE nasabah AUTO_INCREMENT = 1;");
     }
 }

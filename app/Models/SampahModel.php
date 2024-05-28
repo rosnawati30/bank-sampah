@@ -44,6 +44,8 @@ class SampahModel extends Model
 
     function getAll(){
         $builder = $this->db->table('sampah');
+        $builder->select('*')
+                ->orderBy('item');
         $query = $builder->get();
         return $query->getResult();
     }

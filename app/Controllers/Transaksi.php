@@ -38,9 +38,10 @@ class Transaksi extends BaseController
     public function add($id_nasabah)
     {
         $data = [
+            'title' => 'Tambah Transaksi',
             'transaksi' => $this->transaksiModel->getLastTransaksiNasabah($id_nasabah),
             'nasabah' => $this->nasabahModel->where(['id_nasabah'=>$id_nasabah])->first(),
-            'sampah' => $this->sampahModel->findAll()
+            'sampah' => $this->sampahModel->orderBy('item', 'ASC')->findAll()
         ];
 
         return view('transaksi/transaksi_add', $data);
@@ -72,6 +73,7 @@ class Transaksi extends BaseController
     public function view($id_nasabah)
     {
         $data = [
+            'title' => 'Detail Nasabah',
             'transaksi' => $this->transaksiModel->where(['transaksi.id_nasabah'=>$id_nasabah])->orderBy('transaksi.created_at', 'DESC')->getTransaksiNasabah(),
             'berat' => $this->beratModel->getBerat(),
             'nasabah' => $this->nasabahModel->where(['id_nasabah'=>$id_nasabah])->first(),
@@ -101,8 +103,14 @@ class Transaksi extends BaseController
         ]);
 
         $this->transaksiModel->delete($id_transaksi);
+        $this->resetAutoIncrement();
         
         session()->setFlashdata('pesan', 'Transaksi berhasil dihapus!');
         return redirect()->to('nasabah/detail/'.$id_nasabah);
+    }
+
+    private function resetAutoIncrement(){
+        $db = \Config\Database::connect();
+        $query = $db->query("ALTER TABLE nasabah AUTO_INCREMENT = 1");
     }
 }
