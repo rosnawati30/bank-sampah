@@ -24,7 +24,7 @@ class Sampah extends BaseController
     public function index(): string
     {
         $this->data['title'] = "Daftar Sampah";
-        $this->data['sampah'] = $this->sampah_model->orderBy('kode ASC')->getAll();
+        $this->data['sampah'] = $this->sampah_model->getAll();
         return view('sampah/sampah_show', $this->data);
     }
 

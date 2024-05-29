@@ -21,20 +21,21 @@
                 </a>
         </main>
 
-        <main class="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div class="p-6 bg-green-800 border border-gray-200 rounded-lg shadow">
+        <main class="grid gap-5 grid-cols-1 md:grid-cols-8">
+            <div class="p-6 bg-green-800 border border-gray-200 rounded-lg shadow md:col-span-2">
                 <h5 class="mb-2 text-5xl font-bold tracking-tight text-green-50"> <?= count($transaksi) ?> </h5>
                 <p class="mb-3 font-normal text-green-50"> Jumlah Transaksi </p>
             </div>
-            <div class="p-6 bg-green-800 border border-gray-200 rounded-lg shadow">
+            <div class="p-6 bg-green-800 border border-gray-200 rounded-lg shadow md:col-span-4">
                 <h5 class="mb-2 text-5xl font-bold tracking-tight text-green-50">Rp<?= number_format($totalpenjualan, 2); ?></h5>
                 <p class="mb-3 font-normal text-green-50"> Total Penjualan Sampah </p>
             </div>
-            <div class="p-6 bg-green-800 border border-gray-200 rounded-lg shadow">
+            <div class="p-6 bg-green-800 border border-gray-200 rounded-lg shadow md:col-span-2">
                 <h5 class="mb-2 text-5xl font-bold tracking-tight text-green-50"> <?= $totalberat ?> kg</h5>
                 <p class="mb-3 font-normal text-green-50"> Total Sampah </p>
             </div>
         </main>
+
     </main>
 </div>
 

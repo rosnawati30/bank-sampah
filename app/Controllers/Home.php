@@ -32,6 +32,7 @@ class Home extends BaseController
         }
 
         $data = [
+            'title' => 'Dashboard',
             'transaksi' => $transaksi,
             'nasabah'=> $this->nasabahModel->findAll(),
             'sampah' => $this->sampahModel->findAll(),
