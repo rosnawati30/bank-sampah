@@ -55,6 +55,6 @@ class TransaksiModel extends Model
 
     public function getLastTransaksiNasabah($id)
     {
-        return $this->orderBy('created_at', 'DESC')->where(['transaksi.id_nasabah'=>$id])->first();
+        return $this->where(['transaksi.id_nasabah'=>$id])->orderBy('created_at', 'DESC')->first();
     }
 }

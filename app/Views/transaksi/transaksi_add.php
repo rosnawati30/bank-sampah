@@ -21,7 +21,7 @@
     <div class="h-screen justify-center content-center bg-green-900">
         <div class="flex-col m-10 px-7 py-5 shadow-lg bg-white rounded-lg">
             <div class="flex mb-5 items-center">
-                <p class="flex-none text-xl font-bold text-gray-900"> Tambah Transaksi Nasabah </p>
+                <p class="flex-none text-md md:text-xl font-bold text-gray-900"> Tambah Transaksi Nasabah </p>
             </div>
             <form action="/transaksi/save" method="post" enctype="multipart/form-data">
                 <div class="mb-6 w-full">
@@ -51,8 +51,9 @@
                     <label for="berat" class="block mb-2 text-sm font-medium text-gray-900"> Berat </label>
                     <input type="number" name="berat" id="berat" value="<?= $transaksi['berat']; ?>" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5" placeholder="10000" disable readonly>
                 </div>
-                <div class="mt-12 w-full justify-center flex">
-                    <button type="submit" class="text-white bg-green-900 w-1/2 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"> Simpan </button>
+                <div class="flex mt-12 w-full justify-center justify-self-center item-center">
+                        <a href="/transaksi/cancel/<?= $transaksi['id_transaksi'] ?>" class="m-1 justify-center flex text-white bg-red-500 w-1/2 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"><button>Batal</button></a>
+                        <button type="submit" class="m-1 justify-center flex text-white bg-green-900 w-1/2 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"> Simpan </button>
                 </div>
             </form>    
 

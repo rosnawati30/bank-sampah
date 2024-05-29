@@ -90,6 +90,17 @@ class Transaksi extends BaseController
         echo($weight['berat']);
     }
 
+    public function cancel($id_transaksi)
+    {
+        $transaksi = $this->transaksiModel->find($id_transaksi);
+        $id_nasabah = $transaksi['id_nasabah'];
+        
+        $this->transaksiModel->delete($id_transaksi);
+
+        session()->setFlashdata('pesan', 'Transaksi berhasil dihapus!');
+        return redirect()->to('nasabah/detail/'.$id_nasabah);
+    }
+
     public function delete($id_transaksi){
         $transaksi = $this->transaksiModel->find($id_transaksi);
         $berat = $transaksi['berat'];
