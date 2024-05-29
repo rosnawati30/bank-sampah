@@ -68,10 +68,10 @@
                     <td class="px-6 py-4">
                         <?= $p['total_sampah'] ?> kg
                     </td>
-                    <td class="px-6 py-4">
-                        <a href="<?= base_url('nasabah/detail/').$p['id_nasabah']; ?>" class="font-medium text-green-600 hover:underline">Detail</a>
-                        <a href="<?= base_url('nasabah/edit/').$p['id_nasabah']; ?>" class="font-medium text-yellow-600 hover:underline">Edit</a>
-                        <a href="<?= base_url('nasabah/delete/').$p['id_nasabah']; ?>" class="font-medium text-red-600 hover:underline">Hapus</a>
+                    <td class= "py-4 items-center justify-center">
+                        <a href="<?= base_url('nasabah/detail/').$p['id_nasabah']; ?>" class="pr-2 text-yellow-400 dark:text-yellow-400 hover:text-blue-800e"><i class="fa fa-eye" style="font-size: 24px;" aria-hidden="true"></i></a>
+                        <a href="<?= base_url('nasabah/edit/').$p['id_nasabah']; ?>" class="pr-2 text-blue-600 dark:text-blue-500 hover:text-blue-800"><i class="fa fa-pencil-square" style="font-size: 24px;" aria-hidden="true"></i></a>
+                        <a href="<?= base_url('nasabah/delete/').$p['id_nasabah']; ?>" class="text-red-600 dark:text-red-500 hover:text-blue-800"><i class="fa fa-trash" style="font-size: 24px;" aria-hidden="true"></i></a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

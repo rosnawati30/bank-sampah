@@ -22,4 +22,7 @@ $routes->get('/transaksi/save/', 'Transaksi::save');
 $routes->get('/transaksi/save/', 'Transaksi::save');
 $routes->delete('/transaksi/delete/(:num)', 'Transaksi::delete/$1');
 
+//MQTT
+$routes->get('/mqtt', 'Mqtt::index');
+
 $routes->setAutoRoute(true);
