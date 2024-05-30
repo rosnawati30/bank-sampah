@@ -142,7 +142,7 @@
     {
         $(document).ready(function(){
         setInterval(function(){
-            $("#displayweight").load("<?=site_url('transaksi/weight');?>");
+            $("#displayweight").load("<?=site_url('transaksi/getweight');?>");
         }, 1000);
     });
     }

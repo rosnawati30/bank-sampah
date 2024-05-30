@@ -82,12 +82,21 @@ class Transaksi extends BaseController
         return view('nasabah/nasabah_detail', $data);
     }
 
-    public function weight()
+    public function getweight()
     {
         $weight = $this->beratModel->getBerat();
         // $weight = rand(1, 100);
 
         echo($weight['berat']);
+    }
+    
+    public function postweight()
+    {
+        $berat = $this->request->getPost('berat');
+
+        $this->beratModel->update("1",
+            $berat
+        );
     }
 
     public function cancel($id_transaksi)
