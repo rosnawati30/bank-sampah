@@ -82,12 +82,32 @@ class Transaksi extends BaseController
         return view('nasabah/nasabah_detail', $data);
     }
 
-    public function weight()
+    public function getweight()
     {
         $weight = $this->beratModel->getBerat();
         // $weight = rand(1, 100);
 
         echo($weight['berat']);
+    }
+    
+    public function postweight()
+    {
+        $berat = $this->request->getPost('berat');
+
+        $this->beratModel->update("1",
+            $berat
+        );
+    }
+
+    public function cancel($id_transaksi)
+    {
+        $transaksi = $this->transaksiModel->find($id_transaksi);
+        $id_nasabah = $transaksi['id_nasabah'];
+        
+        $this->transaksiModel->delete($id_transaksi);
+
+        session()->setFlashdata('pesan', 'Transaksi berhasil dihapus!');
+        return redirect()->to('nasabah/detail/'.$id_nasabah);
     }
 
     public function delete($id_transaksi){
